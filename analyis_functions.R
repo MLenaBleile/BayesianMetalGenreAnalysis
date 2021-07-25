@@ -31,14 +31,14 @@ plot_countries_posterior= function(country.vec){
     topthree[j,] = names(alphahat)[order(mm,decreasing=T)[1:3]]
     if(grind_to_death){
       print("generating filepath...")
-      filepath = paste(tolower(country.vec[j]),"_imgs/",dataset,"_",order,"_",genre_array,"_GtD.pdf", sep="")
+      filepath = paste(tolower(country.vec[j]),"_imgs/",dataset,"_",order,"_",genre_array,"_GtD.png", sep="")
       text_str = paste(dataset, order, genre_array, "Grindcore Reassigned", sep= ", ")
     }else{
       print("generating filepath...")
-      filepath = paste(tolower(country.vec[j]),"_imgs/",dataset,"_",order,"_",genre_array,".pdf", sep="")
+      filepath = paste(tolower(country.vec[j]),"_imgs/",dataset,"_",order,"_",genre_array,".png", sep="")
       text_str = paste(dataset, order, genre_array, sep=", ")
     }
-    pdf(filepath, width=10)
+    png(filepath, width=700)
     print(filepath)
     boxplot(thetas.post[,order(mm),j], main=country.vec[j], col="turquoise", ylab=expression(theta))
     #mtext(text_str)
